@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.google.gdt.eclipse.suite.webapp">
+<booleanAttribute key="com.google.gdt.eclipse.core.AUTO_PORT_SELECTION" value="true"/>
+<booleanAttribute key="com.google.gdt.eclipse.core.RUN_SERVER" value="false"/>
+<stringAttribute key="com.google.gdt.eclipse.core.SERVER_PORT" value="8080"/>
+<stringAttribute key="com.google.gdt.eclipse.suiteMainTypeProcessor.PREVIOUSLY_SET_MAIN_TYPE_NAME" value="com.google.gwt.dev.DevMode"/>
+<booleanAttribute key="com.google.gdt.eclipse.suiteWarArgumentProcessor.IS_WAR_FROM_PROJECT_PROPERTIES" value="true"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/com.github.tux2323.demo.chat.web"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="com.google.gwt.eclipse.core.moduleClasspathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.google.gwt.dev.DevMode"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-noserver -war /Users/developer/Develop/workspace/Chat-OSGi-Demo/com.github.tux2323.demo.chat.web/webapp -remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -logLevel INFO com.github.tux2323.demo.chat.SimpleChat com.github.tux2323.demo.chat.SimpleChat"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="com.github.tux2323.demo.chat.web"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m -XstartOnFirstThread -d32"/>
+<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:com.github.tux2323.demo.chat.web/webapp}"/>
+</launchConfiguration>
