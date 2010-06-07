@@ -1,5 +1,6 @@
 package com.github.tux2323.demo.chat.server;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,6 @@ import org.osgi.util.tracker.ServiceTracker;
 
 import com.github.tux2323.demo.chat.Activator;
 import com.github.tux2323.demo.chat.client.WebChatServer;
-import com.github.tux2323.demo.chat.client.WebSession;
 import com.github.tux2323.demo.chatserver.ChatClient;
 import com.github.tux2323.demo.chatserver.ChatServer;
 import com.github.tux2323.demo.chatserver.Session;
@@ -19,10 +19,10 @@ public class WebChatServerImpl extends RemoteServiceServlet implements WebChatSe
 
 	private static int lastSessionId = 9999;
 	
-	private Map<WebSession, WebChatClient> recievers = new HashMap<WebSession, WebChatClient>();
+	private Map<String, WebChatSession> recievers = new HashMap<String, WebChatSession>();
 	
 	@Override
-	public WebSession login(String username, String password) {
+	public String login(String username, String password) {
 		BundleContext context = Activator.getBundleContext();
 		ServiceTracker chatServerTracker = new ServiceTracker(context, ChatServer.class.getName(), null);
 		chatServerTracker.open();
@@ -32,26 +32,25 @@ public class WebChatServerImpl extends RemoteServiceServlet implements WebChatSe
 		
 		chatServerTracker.close();
 		
-		WebSession webSession = new WebSession();
-		webSession.setSessionId(String.valueOf(lastSessionId++));
+		String sessionId = String.valueOf(lastSessionId++);
 		
-		WebChatClient chatClient = new WebChatClient();
+		WebChatSession chatClient = new WebChatSession();
 		chatClient.setSession(session);
-		recievers.put(webSession, chatClient);
+		recievers.put(sessionId, chatClient);
 		
 		BundleContext bundleContext = Activator.getBundleContext();
 		bundleContext.registerService(ChatClient.class.getName(), chatClient, null);
 		
-		return webSession;
+		return sessionId;
 	}
 
 	@Override
-	public void sendMessage(WebSession webSession, String msg) {
+	public void sendMessage(String sessionId, String msg) {
 		BundleContext context = Activator.getBundleContext();
 		ServiceTracker chatServerTracker = new ServiceTracker(context, ChatServer.class.getName(), null);
 		chatServerTracker.open();
 		
-		WebChatClient chatClient = recievers.get(webSession);
+		WebChatSession chatClient = recievers.get(sessionId);
 		
 		ChatServer chatServer = (ChatServer) chatServerTracker.getService();
 		chatServer.sendMessage(chatClient.getSession(), msg);
@@ -60,9 +59,11 @@ public class WebChatServerImpl extends RemoteServiceServlet implements WebChatSe
 	}
 
 	@Override
-	public List<String> pollMessages(WebSession session) {
-		WebChatClient chatClient = recievers.get(session);
-		return chatClient.pollMessages();
+	public List<String> pollMessages(String sessionId) {
+		WebChatSession webChatSession = recievers.get(sessionId);
+		if(webChatSession != null)
+			return webChatSession.pollMessages();
+		return new ArrayList<String>();
 	}
 
 }

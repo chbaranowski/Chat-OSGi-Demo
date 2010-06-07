@@ -8,11 +8,11 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("chatServer")
 public interface WebChatServer extends RemoteService {
 
-	WebSession login(String username, String password);
+	String login(String username, String password);
 	
-	void sendMessage(WebSession session, String msg);
+	void sendMessage(String session, String msg);
 	
-	List<String> pollMessages(WebSession session);
+	List<String> pollMessages(String session);
 	
 	
 }

@@ -6,11 +6,11 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface WebChatServerAsync {
 
-	void login(String username, String password, AsyncCallback<WebSession> callback);
+	void login(String username, String password, AsyncCallback<String> callback);
 
-	void sendMessage(WebSession session, String msg,
+	void sendMessage(String session, String msg,
 			AsyncCallback<Void> callback);
 
-	void pollMessages(WebSession session, AsyncCallback<List<String>> callback);
+	void pollMessages(String session, AsyncCallback<List<String>> callback);
 	
 }

@@ -1,9 +1,10 @@
 package com.github.tux2323.demo.chatserver.test;
 
+import static org.junit.Assert.*;
+
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.osgi.framework.BundleContext;
@@ -46,7 +47,8 @@ public class ChatServerTest {
 	@Test
 	public void testLogin(){
 		Session session = chatServer.login("tester", "test");
-		Assert.assertNotNull(session);
+		assertNotNull(session);
+		assertEquals("tester", session.getUsername());
 	}
 	
 	@Test
@@ -55,7 +57,7 @@ public class ChatServerTest {
 		Session session = chatServer.login("tester", "test");
 		
 		mockery.checking(new Expectations() {{
-		    oneOf(mockChatClient).receiveMessage(testMsg);
+		    oneOf(mockChatClient).receiveMessage("tester", testMsg);
 		}});
 		
 		chatServer.sendMessage(session, testMsg);

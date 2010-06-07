@@ -24,7 +24,6 @@ public class Activator implements BundleActivator {
 		httpServiceTracker.open();
 		HttpService httpService = (HttpService) httpServiceTracker.getService();
 		HttpContext httpContext = httpService.createDefaultHttpContext();
-		httpService.registerResources("/", "webapp", httpContext);
 		
 		WebChatServerImpl webChatServerServlet = new WebChatServerImpl();
 		httpService.registerServlet("/simpleChat/chatServer", webChatServerServlet, new Properties(), httpContext);

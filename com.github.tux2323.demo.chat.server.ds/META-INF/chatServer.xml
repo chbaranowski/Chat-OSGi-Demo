@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.github.tux2323.demo.chat.server">
+   <implementation class="com.github.tux2323.demo.chatserver.internal.ChatServiceImpl"/>
+   <service>
+      <provide interface="com.github.tux2323.demo.chatserver.ChatServer"/>
+   </service>
+   <reference bind="setChatClients" cardinality="0..n" interface="com.github.tux2323.demo.chatserver.ChatClient" name="ChatClient" policy="dynamic" unbind="unsetChatClients"/>
+</scr:component>
