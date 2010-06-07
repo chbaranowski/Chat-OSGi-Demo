@@ -16,11 +16,6 @@ public class WebChatClient implements ChatClient {
 	
 	private ServiceReference serviceReference;
 	
-	@Override
-	public void receiveMessage(String msg) {
-		messages.add(msg);
-	}
-	
 	public List<String> pollMessages(){
 		List<String> result = messages;
 		messages = new ArrayList<String>();
@@ -41,6 +36,11 @@ public class WebChatClient implements ChatClient {
 
 	public Session getSession() {
 		return session;
+	}
+
+	@Override
+	public void receiveMessage(String from, String msg) {
+		messages.add(msg);
 	}
 	
 }
