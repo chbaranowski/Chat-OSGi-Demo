@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="/demo-platform/bundles/javax.servlet_2.5.0.v200806031605.jar"/>
+	<classpathentry kind="lib" path="/demo-platform/bundles/org.eclipse.osgi_3.5.2.R35x_v20100126.jar"/>
+	<classpathentry kind="lib" path="/demo-platform/bundles/org.eclipse.osgi.services_3.2.0.v20090520-1800.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/com.github.tux2323.demo.chat.server"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

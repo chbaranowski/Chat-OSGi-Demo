@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Chat Server
+Bundle-SymbolicName: com.github.tux2323.demo.chat.server
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.github.tux2323.demo.chat.server.internal.Activator
+Bundle-Vendor: GITHUB
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: com.github.tux2323.demo.chat.server

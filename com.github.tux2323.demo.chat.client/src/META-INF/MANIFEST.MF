@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Chat Client
+Bundle-SymbolicName: com.github.tux2323.demo.chat.client
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.github.tux2323.demo.chat.client.Activator
+Bundle-Vendor: GITHUB
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: com.github.tux2323.demo.chat.server,
+ javax.servlet;version="2.5.0",
+ javax.servlet.http;version="2.5.0",
+ org.osgi.framework;version="1.3.0",
+ org.osgi.service.http;version="1.2.1",
+ org.osgi.util.tracker;version="1.4.0"
+Bundle-ActivationPolicy: lazy
